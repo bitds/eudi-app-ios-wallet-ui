@@ -17,6 +17,10 @@ let package = Package(
       exact: "0.30.6"
     ),
     .package(
+      url: "https://github.com/eu-digital-identity-wallet/eudi-lib-ios-siop-openid4vp-swift.git",
+      exact: "0.33.1"
+    ),
+    .package(
       name: "logic-resources",
       path: "./logic-resources"
     ),
@@ -44,6 +48,10 @@ let package = Package(
         .product(
           name: "EudiWalletKit",
           package: "eudi-lib-ios-wallet-kit"
+        ),
+        .product(
+          name: "OpenID4VP",
+          package: "eudi-lib-ios-siop-openid4vp-swift"
         )
       ],
       path: "./Sources"

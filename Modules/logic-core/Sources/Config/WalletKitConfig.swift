@@ -17,6 +17,7 @@ import Foundation
 import logic_business
 import EudiWalletKit
 import Security
+import OpenID4VP
 
 protocol WalletKitConfig: Sendable {
 
@@ -107,20 +108,8 @@ struct WalletKitConfigImpl: WalletKitConfig {
         return [
           .init(
             config: .init(
-              credentialIssuerURL: "https://issuer.eudiw.dev",
-              clientId: "wallet-dev",
-              keyAttestationsConfig: .init(walletAttestationsProvider: walletKitAttestationProvider),
-              authFlowRedirectionURI: URL(string: "eu.europa.ec.euidi://authorization")!,
-              requirePAR: true,
-              requireDpop: true,
-              cacheIssuerMetadata: true
-            ),
-            order: 1
-          ),
-          .init(
-            config: .init(
-              credentialIssuerURL: "https://issuer-backend.eudiw.dev",
-              clientId: "wallet-dev",
+              credentialIssuerURL: "https://issue.loguea.es",
+              clientId: "testeidas.loguea.es",
               keyAttestationsConfig: .init(walletAttestationsProvider: walletKitAttestationProvider),
               authFlowRedirectionURI: URL(string: "eu.europa.ec.euidi://authorization")!,
               requirePAR: true,
@@ -174,12 +163,24 @@ struct WalletKitConfigImpl: WalletKitConfig {
     }
   }
 
-  var vpConfig: OpenId4VpConfiguration {
-    .init(
-      clientIdSchemes: [.x509SanDns, .x509Hash],
-      allowPresentingPartialClaims: true
-    )
-  }
+    var vpConfig: OpenId4VpConfiguration {
+      .init(
+        clientIdSchemes: [
+          .x509SanDns,
+          .x509Hash,
+          .preregistered(
+            [
+              PreregisteredClient(
+                clientId: "testeidas.loguea.es",
+                verifierApiUri: "https://testeidas.loguea.es",
+                verifierLegalName: "Test eIDAS"
+              )
+            ]
+          )
+        ],
+        allowPresentingPartialClaims: true
+      )
+    }
 
   var trustedReaderRootCertificates: [x5chain] {
     let certificates = [
@@ -190,7 +191,8 @@ struct WalletKitConfigImpl: WalletKitConfig {
       "pidissuerca02_nl",
       "pidissuerca02_pt",
       "pidissuerca02_ut",
-      "r45_staging"
+      "r45_staging",
+      "testeidas_ca"
     ]
     return certificates
       .compactMap { loadCertificate($0) }
@@ -241,7 +243,8 @@ struct WalletKitConfigImpl: WalletKitConfig {
       ],
       .Other: [
         .other(formatType: "eu.europa.ec.eudi.por.1"),
-        .other(formatType: "urn:eu.europa.ec.eudi:por:1")
+        .other(formatType: "urn:eu.europa.ec.eudi:por:1"),
+        .other(formatType: "eu.europa.ec.eudi.bitds.1")
       ]
     ]
   }
