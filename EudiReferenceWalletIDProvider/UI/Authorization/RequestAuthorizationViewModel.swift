@@ -47,8 +47,7 @@ final class RequestAuthorizationViewModel: ViewModel<RequestAuthorizationViewSta
         isLoading: true,
         contentHeaderConfig: .init(
           appIconAndTextData: AppIconAndTextData(
-            appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-            appText: ThemeManager.shared.image.euditext
+            appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet
           ),
           description: .dataSharingTitle
         )
@@ -77,8 +76,7 @@ final class RequestAuthorizationViewModel: ViewModel<RequestAuthorizationViewSta
           isLoading: false,
           contentHeaderConfig: .init(
             appIconAndTextData: AppIconAndTextData(
-              appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-              appText: ThemeManager.shared.image.euditext
+              appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet
             ),
             description: .dataSharingTitle,
             mainText: .dataSharingRequest,
@@ -131,6 +129,7 @@ final class RequestAuthorizationViewModel: ViewModel<RequestAuthorizationViewSta
       navigationTitle: .biometryConfirmRequest,
       caption: .requestDataShareBiometryCaption,
       quickPinOnlyCaption: .requestDataShareQuickPinCaption,
+      pinTextFieldTitle: .enterYourPin,
       navigationSuccessType: .pop,
       navigationBackType: nil,
       isPreAuthorization: false,

@@ -52,8 +52,7 @@ final class ProximityRequestViewModel<Router: RouterHost>: BaseRequestViewModel<
         $0.copy(
           contentHeaderConfig: .init(
             appIconAndTextData: AppIconAndTextData(
-              appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-              appText: ThemeManager.shared.image.euditext
+              appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet
             ),
             description: .dataSharingTitle,
             mainText: getTitle(),
@@ -99,6 +98,7 @@ final class ProximityRequestViewModel<Router: RouterHost>: BaseRequestViewModel<
           navigationTitle: .biometryConfirmRequest,
           caption: .requestDataShareBiometryCaption,
           quickPinOnlyCaption: .requestDataShareQuickPinCaption,
+          pinTextFieldTitle: .enterYourPin,
           navigationSuccessType: .push(
             .featureProximityModule(
               .proximityLoader(

@@ -53,7 +53,7 @@ public struct TextConfig {
 
   public init(
     font: Font,
-    color: Color = Theme.shared.color.onSurface,
+    color: Color = Theme.shared.color.primaryLabel,
     textAlign: TextAlignment = .center,
     maxLines: Int = 2,
     fontWeight: Font.Weight? = nil
@@ -89,10 +89,10 @@ public struct ContentHeaderView: View {
           text: description,
           textConfig: config.descriptionTextConfig ?? TextConfig(
             font: Theme.shared.font.bodyLarge.font,
-            color: Theme.shared.color.onSurface,
+            color: Theme.shared.color.primaryLabel,
             textAlign: .center,
             maxLines: 2,
-            fontWeight: nil
+            fontWeight: .semibold
           )
         )
         .padding(.vertical, SPACING_SMALL)
@@ -106,7 +106,7 @@ public struct ContentHeaderView: View {
           text: mainText,
           textConfig: config.mainTextConfig ?? TextConfig(
             font: Theme.shared.font.headlineMedium.font,
-            color: Theme.shared.color.onSurface,
+            color: Theme.shared.color.primaryLabel,
             textAlign: .center,
             maxLines: 2,
             fontWeight: .semibold
@@ -144,8 +144,7 @@ public struct ContentHeaderView: View {
   ContentHeaderView(
     config: ContentHeaderConfig(
       appIconAndTextData: AppIconAndTextData(
-        appIcon: Image(systemName: "app"),
-        appText: Image(systemName: "app")
+        appIcon: Image(systemName: "app")
       ),
       description: .custom("This is a description"),
       descriptionTextConfig: nil,

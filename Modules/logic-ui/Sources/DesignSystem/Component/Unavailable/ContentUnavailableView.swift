@@ -33,11 +33,12 @@ public struct ContentUnavailableView: View {
     VStack(spacing: SPACING_SMALL) {
       Text(title)
         .typography(Theme.shared.font.titleLarge)
+        .foregroundStyle(Theme.shared.color.primaryLabel)
         .fontWeight(.bold)
 
       Text(description)
         .typography(Theme.shared.font.bodyLarge)
-        .foregroundStyle(Theme.shared.color.onSurface)
+        .foregroundStyle(Theme.shared.color.primaryLabel)
         .multilineTextAlignment(.center)
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)

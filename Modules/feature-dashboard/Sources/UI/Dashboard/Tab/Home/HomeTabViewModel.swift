@@ -50,8 +50,7 @@ final class HomeTabViewModel<Router: RouterHost>: ViewModel<Router, HomeTabState
         username: nil,
         contentHeaderConfig: .init(
           appIconAndTextData: AppIconAndTextData(
-            appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-            appText: ThemeManager.shared.image.euditext
+            appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet
           )
         ),
         phase: .active,
@@ -62,7 +61,7 @@ final class HomeTabViewModel<Router: RouterHost>: ViewModel<Router, HomeTabState
 
   func onCreate() async {
     let username = await interactor.fetchUsername()
-    setState { $0.copy(username: username) }
+    setState { $0.copy(username: getUserName(username)) }
     onUpdateToolbar(
       .init(
         trailingActions: nil,
@@ -151,5 +150,10 @@ final class HomeTabViewModel<Router: RouterHost>: ViewModel<Router, HomeTabState
         .sideMenu
       )
     )
+  }
+
+  private func getUserName(_ username: String) -> String {
+    let trimmedUsername = username.trimmingCharacters(in: .whitespacesAndNewlines)
+    return trimmedUsername.isEmpty ? "" : ", \(trimmedUsername)"
   }
 }
