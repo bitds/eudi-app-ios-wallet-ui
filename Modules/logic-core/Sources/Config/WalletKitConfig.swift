@@ -262,8 +262,8 @@ struct WalletKitConfigImpl: WalletKitConfig {
     case .DEMO:
       DocumentIssuanceConfig(
         defaultRule: DocumentIssuanceRule(
-          policy: .rotateUse,
-          numberOfCredentials: 15
+          policy: .oneTimeUse,
+          numberOfCredentials: 10
         ),
         documentSpecificRules: [
           DocumentTypeIdentifier.mDocPid: DocumentIssuanceRule(
@@ -284,8 +284,8 @@ struct WalletKitConfigImpl: WalletKitConfig {
     case .DEV:
       DocumentIssuanceConfig(
         defaultRule: DocumentIssuanceRule(
-          policy: .rotateUse,
-          numberOfCredentials: 1
+          policy: .oneTimeUse,
+          numberOfCredentials: 10
         ),
         documentSpecificRules: [
           DocumentTypeIdentifier.mDocPid: DocumentIssuanceRule(
