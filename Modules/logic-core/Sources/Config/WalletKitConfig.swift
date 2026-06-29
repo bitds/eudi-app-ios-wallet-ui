@@ -172,7 +172,7 @@ struct WalletKitConfigImpl: WalletKitConfig {
             [
               PreregisteredClient(
                 clientId: "testeidas.loguea.es",
-                verifierApiUri: "https://testeidas.loguea.es",
+                verifierApiUri: "https://testeidas.loguea.es/",
                 verifierLegalName: "Test eIDAS"
               )
             ]
@@ -263,7 +263,7 @@ struct WalletKitConfigImpl: WalletKitConfig {
       DocumentIssuanceConfig(
         defaultRule: DocumentIssuanceRule(
           policy: .rotateUse,
-          numberOfCredentials: 1
+          numberOfCredentials: 15
         ),
         documentSpecificRules: [
           DocumentTypeIdentifier.mDocPid: DocumentIssuanceRule(
